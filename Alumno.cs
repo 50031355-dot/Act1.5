@@ -1,6 +1,6 @@
-﻿namespace Act1._5;
+namespace Act1._5;
 
-class Program
+class Alumno
 {
     static void Main(string[] args)
     {
