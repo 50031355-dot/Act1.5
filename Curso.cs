@@ -15,6 +15,7 @@ class Curso
             return false;
         }
         Alumno a = new Alumno(dni, nombre, cantFaltas);
+        listaAlumnos.Add(a);
         return true;
     }
     public bool BuscarAlumno(int dni){
@@ -33,7 +34,7 @@ class Curso
     public List<Alumno> MostrarAlumnosLibres(){
         List<Alumno> listaLibres = new List<Alumno>();
         foreach(Alumno a in listaAlumnos){
-            double faltas= a.GetFaltas;
+            double faltas= a.GetFaltas();
             if (faltas>15){
                 listaLibres.Add(a);
             }
@@ -50,12 +51,13 @@ class Curso
     }
     private Alumno EncontrarAlumno(int dni){ //Esta funcion busca el alumno y además devuelve el alumno
         int index=0;
+        Alumno alumno=listaAlumnos[0];
         while(index!=listaAlumnos.Count()){
             if (dni==listaAlumnos[index].GetDNI()){
-                return listaAlumnos[index];
+                 alumno=listaAlumnos[index];
             }
             index+=1;
-        return null;
-        
+        }
+        return alumno;
     }
-}}
+}
