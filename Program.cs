@@ -64,7 +64,7 @@ class Program
                     }
                     break;
                 case 4:
-                    List<Alumno> listaAlumnos = curso1.MostrarAlumnos();
+                List<Alumno> listaAlumnos = curso1.MostrarAlumnos();
                     foreach(Alumno a in listaAlumnos){
                         Console.WriteLine(a.MostrarInfo());
                     }

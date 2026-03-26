@@ -16,7 +16,7 @@ class Curso
             return false;
         }
         Alumno a = new Alumno(dni, nombre, cantFaltas);
-        alumnos.Add(dni, Alumno);
+        alumnos.Add(dni, a);
         return true;
     }
     public bool BuscarAlumno(int dni){
@@ -26,15 +26,19 @@ class Curso
         }
         return false;
     }
-    public Dictionary<int, Alumno> MostrarAlumnos(){
+    public List<Alumno> MostrarAlumnos(){
+        List<Alumno> listaAlumnos=new List<Alumno>();
+        foreach (int clave in alumnos.Keys){
+            listaAlumnos.Add(alumnos[clave]);
+        }
         return listaAlumnos;
     }
-    public Dictionary<int, Alumno> MostrarAlumnosLibres(){
-        Dictionary<int, Alumno> listaLibres = new Dictionary <int, Alumno>();
-        foreach(int clave in alumnos){
+    public List<Alumno> MostrarAlumnosLibres(){
+        List<Alumno> listaLibres = new List< Alumno>();
+        foreach(int clave in alumnos.Keys){
             double faltas= alumnos[clave].GetFaltas();
             if (faltas>15){
-                listaLibres.Add(a);
+                listaLibres.Add(alumnos[clave]);
             }
         }
         return listaLibres;
@@ -47,12 +51,13 @@ class Curso
         }
         return encontrado;
     }
-    private Alumno EncontrarAlumno(int dni){ //Esta funcion busca el alumno y además devuelve el alumno
+    private Alumno EncontrarAlumno(int dni) //Esta funcion busca el alumno y además devuelve el alumno
     {
-
-       foreach(int clave in alumnos){
-        if ()
-       }
-       return alumno;
+       foreach (int clave in alumnos.Keys){
+        if (clave == dni){
+            return alumnos[clave];
+        } 
+        }
+        return null;
     }
 }
